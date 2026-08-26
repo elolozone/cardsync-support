@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CardSync — Assistance</title>
+<meta name="description" content="Assistance de CardSync, l'app iPhone de copie vérifiée vers un support externe.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="langues"><strong>Français</strong> · <a href="en/">English</a></nav>
+
+<header>
+  <div class="marque">✓</div>
+  <div>
+    <h1>CardSync — Assistance</h1>
+    <p>Copie vérifiée vers un support externe</p>
+  </div>
+</header>
+
+<p>CardSync sauvegarde vers un support externe — typiquement un SSD branché en USB-C —
+et <strong>vérifie chaque fichier écrit</strong>. La source peut être un dossier,
+par exemple une carte mémoire, ou un album de votre photothèque.</p>
+
+<h2>Premiers pas</h2>
+<ul>
+  <li>Branchez votre support. Un hub USB-C alimenté est recommandé : un iPhone alimente mal un SSD gourmand.</li>
+  <li>Touchez <strong>+</strong>, puis choisissez une source — un dossier via l'app Fichiers, ou un album de la photothèque — et un dossier de destination.</li>
+  <li>Touchez <strong>Analyser</strong>. Rien n'est écrit à cette étape : vous voyez ce qui serait copié.</li>
+  <li>Touchez <strong>Copier</strong>. Vous suivez la progression, le débit et le temps restant, et vous pouvez interrompre à tout moment.</li>
+</ul>
+
+<div class="encadre">
+  <p><strong>Gardez l'écran de CardSync affiché pendant la copie.</strong> iOS suspend les
+  apps passées en arrière-plan et ne maintient pas l'accès aux volumes externes. L'app
+  empêche la mise en veille automatique ; si vous quittez, la copie s'arrête proprement
+  et reprend là où elle en était au lancement suivant.</p>
+</div>
+
+<h2>Ce que fait la vérification</h2>
+<p>Chaque fichier est d'abord écrit sous un nom temporaire, puis mis en place d'un seul
+geste, une fois complet et vérifié. Un fichier déjà présent à destination n'est jamais
+effacé avant que son remplaçant ne soit prêt : une copie interrompue ne laisse donc
+jamais de fichier tronqué.</p>
+<p>Pour une source <strong>dossier</strong>, l'empreinte SHA-256 du fichier écrit est comparée
+à celle de l'original, relu une seconde fois. Si les deux lectures de l'original diffèrent,
+c'est le lecteur de carte ou la carte qui est en cause, et l'app vous le dit plutôt que de
+recopier des données corrompues.</p>
+<p>Pour une source <strong>photothèque</strong>, la comparaison se fait avec l'empreinte
+calculée pendant l'export : le système n'expose pas de fichier d'origine relisible.</p>
+
+<h2>Sauvegarder la photothèque</h2>
+<p>Choisissez un album, un album intelligent ou toute la photothèque, avec au besoin un
+filtre « depuis une date ». CardSync exporte le fichier d'origine, et si vous le souhaitez
+la vidéo des Live Photos, la version retouchée, et une fiche de métadonnées lisible
+contenant date, lieu, dimensions, favori et album.</p>
+<p>Les éléments qui ne sont plus stockés sur l'appareil sont récupérés depuis iCloud
+pendant la copie. Cela peut être long et consommer des données : l'option se désactive
+dans les réglages de la synchro.</p>
+
+<h2>Problèmes courants</h2>
+
+<h3>« Le dossier n'est pas accessible »</h3>
+<p>Un support chiffré se reverrouille à chaque débranchement. Touchez le bouton
+<strong>Ouvrir</strong> proposé dans le message d'erreur : iOS affiche alors la demande de
+mot de passe, et l'analyse repart toute seule. Le bouton <strong>Réessayer</strong> sert si
+vous avez déjà déverrouillé le support ailleurs.</p>
+
+<h3>L'espace libre n'apparaît pas</h3>
+<p>Beaucoup de volumes externes ne savent pas rapporter leur espace disponible. CardSync
+préfère ne rien afficher plutôt qu'un chiffre faux, et cela n'empêche jamais une copie
+de démarrer.</p>
+
+<h3>Les mêmes fichiers sont recopiés à chaque fois</h3>
+<p>Certains supports refusent d'enregistrer la date de modification. L'app le signale dans
+le bilan. Dans les réglages de la synchro, choisissez la comparaison
+<strong>« Taille seule »</strong> : elle ne dépend pas des dates.</p>
+
+<h3>Des fichiers échouent avec une erreur de vérification</h3>
+<p>Le fichier écrit ne correspondait pas à l'original ; il a été supprimé, et le fichier
+déjà présent à destination n'a pas été touché. C'est en général le signe d'un câble, d'un
+lecteur de carte ou d'un support défaillant. Essayez un autre câble ou un autre lecteur.</p>
+
+<h2>Nous écrire</h2>
+<p>Une question, un problème, une suggestion :
+<a href="mailto:laurent.meurisse@mac.com?subject=CardSync">laurent.meurisse@mac.com</a>.</p>
+<p>Pour un problème de copie, précisez si possible le modèle de support, son format
+(exFAT, APFS…), et le message exact affiché dans le journal de l'app.</p>
+
+<footer>
+  <p>CardSync — Laurent Meurisse ·
+  <a href="confidentialite.html">Confidentialité</a> ·
+  <a href="en/">English</a></p>
+</footer>
+</body>
+</html>

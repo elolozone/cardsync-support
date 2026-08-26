@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CardSync — Support</title>
+<meta name="description" content="Support for CardSync, the iPhone app that copies to an external drive and verifies every file.">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<nav class="langues"><a href="../">Français</a> · <strong>English</strong></nav>
+
+<header>
+  <div class="marque">✓</div>
+  <div>
+    <h1>CardSync — Support</h1>
+    <p>Verified copying to an external drive</p>
+  </div>
+</header>
+
+<p>CardSync backs up to an external drive — typically an SSD over USB-C — and
+<strong>verifies every file it writes</strong>. The source can be a folder, such as a
+memory card, or an album from your photo library.</p>
+
+<h2>Getting started</h2>
+<ul>
+  <li>Plug in your drive. A powered USB-C hub is recommended: an iPhone struggles to power a hungry SSD.</li>
+  <li>Tap <strong>+</strong>, then pick a source — a folder through the Files app, or a photo album — and a destination folder.</li>
+  <li>Tap <strong>Analyse</strong>. Nothing is written at this stage: you see what would be copied.</li>
+  <li>Tap <strong>Copy</strong>. You get progress, throughput and time left, and you can stop at any moment.</li>
+</ul>
+
+<div class="encadre">
+  <p><strong>Keep CardSync on screen while it copies.</strong> iOS suspends apps sent to
+  the background and does not keep external volumes available to them. The app prevents
+  the screen from locking; if you leave, the copy stops cleanly and resumes where it left
+  off next time.</p>
+</div>
+
+<h2>What verification does</h2>
+<p>Every file is first written under a temporary name, then put in place in one move, once
+complete and verified. A file already present at the destination is never deleted before
+its replacement is ready, so an interrupted copy never leaves a truncated file behind.</p>
+<p>For a <strong>folder</strong> source, the SHA-256 digest of the file written is compared
+with the original, itself read a second time. If the two reads of the original differ, the
+card or the card reader is at fault, and the app says so instead of copying corrupted data.</p>
+<p>For a <strong>photo library</strong> source, the comparison is made against the digest
+computed during the export: the system exposes no re-readable original file.</p>
+
+<h2>Backing up the photo library</h2>
+<p>Pick an album, a smart album or the whole library, with an optional "from a date"
+filter. CardSync exports the original file and, if you want, the Live Photo video, the
+edited version, and a readable metadata sidecar holding date, location, dimensions,
+favourite and album.</p>
+<p>Items no longer stored on the device are fetched from iCloud during the copy. That can
+take a while and use data: the option can be turned off in the sync's settings.</p>
+
+<h2>Common problems</h2>
+
+<h3>"The folder is not available"</h3>
+<p>An encrypted drive re-locks every time it is unplugged. Tap the <strong>Open</strong>
+button offered in the error message: iOS then shows its password prompt, and the analysis
+restarts on its own. <strong>Try again</strong> is for when you have already unlocked the
+drive elsewhere.</p>
+
+<h3>Free space is not shown</h3>
+<p>Many external volumes cannot report their available space. CardSync would rather show
+nothing than a wrong figure, and this never prevents a copy from starting.</p>
+
+<h3>The same files are copied every time</h3>
+<p>Some drives refuse to record modification dates. The app reports this in the summary.
+In the sync's settings, choose the <strong>Size only</strong> comparison: it does not
+depend on dates.</p>
+
+<h3>Files fail with a verification error</h3>
+<p>What was written did not match the original; it was deleted, and the file already
+present at the destination was left untouched. This usually points to a failing cable,
+card reader or drive. Try another cable or another reader.</p>
+
+<h2>Get in touch</h2>
+<p>Question, problem or suggestion:
+<a href="mailto:laurent.meurisse@mac.com?subject=CardSync">laurent.meurisse@mac.com</a>.</p>
+<p>For a copying problem, please mention the drive model, its format (exFAT, APFS…), and
+the exact message shown in the app's log.</p>
+
+<footer>
+  <p>CardSync — Laurent Meurisse ·
+  <a href="privacy.html">Privacy</a> ·
+  <a href="../">Français</a></p>
+</footer>
+</body>
+</html>
