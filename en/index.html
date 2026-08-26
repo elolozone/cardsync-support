@@ -37,6 +37,30 @@ memory card, or an album from your photo library.</p>
   off next time.</p>
 </div>
 
+<h2>Which drives</h2>
+<p>The source and the destination are two folders, picked in the Files app. Anything iOS
+exposes there works, in both directions:</p>
+<ul>
+  <li>a <strong>memory card</strong> through a reader, or an <strong>SSD</strong> or stick over USB-C;</li>
+  <li><strong>iCloud Drive</strong>, and the services you have installed — Dropbox, Google&nbsp;Drive, OneDrive… — as long as they allow picking a folder;</li>
+  <li>the <strong>iPhone itself</strong>, under "On My iPhone";</li>
+  <li>an <strong>album from your photo library</strong>, as a source.</li>
+</ul>
+<p>Nothing requires starting from a card: SSD to SSD, iCloud to SSD, card to iCloud all
+work the same way. When a file is not yet present on the device — common with an online
+service or with some card readers — CardSync waits until it is genuinely available before
+reading it, rather than copying an empty placeholder.</p>
+
+<h2>Large volumes and long copies</h2>
+<p>Files are read and written in small successive blocks, never loaded whole into memory:
+<strong>a 4 GB video uses no more memory than a photo</strong> — measured at about 90 MB
+for a verified 4 GB copy. File size is therefore not a limit.</p>
+<p>For copies that take a while, what matters is <strong>resuming</strong>. A file only
+appears under its final name once complete and verified, and the next analysis compares
+both sides: running it again after an interruption — screen left, drive unplugged, battery
+— copies only what is genuinely missing. On a set of several tens of thousands of files
+that analysis remains a matter of seconds, and files already verified are never redone.</p>
+
 <h2>What verification does</h2>
 <p>Every file is first written under a temporary name, then put in place in one move, once
 complete and verified. A file already present at the destination is never deleted before

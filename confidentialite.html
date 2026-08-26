@@ -40,11 +40,20 @@ destination que vous avez choisi. Rien d'autre. Vos fichiers ne quittent jamais 
 propres supports.</p>
 
 <h2>Utilisation du réseau</h2>
-<p>CardSync n'envoie rien sur Internet. La seule utilisation du réseau est le
-<strong>téléchargement de vos propres photos depuis votre photothèque iCloud</strong>,
-lorsque vous demandez la sauvegarde d'éléments qui ne sont plus stockés sur l'appareil.
-Cet échange a lieu entre votre appareil et votre compte iCloud, sans intermédiaire, et
-l'option se désactive dans les réglages de chaque synchro.</p>
+<p>CardSync ne possède aucun code réseau et ne contacte aucun serveur qui lui
+appartiendrait. Du trafic peut néanmoins avoir lieu, dans deux cas, et toujours entre
+votre appareil et vos propres comptes :</p>
+<ul>
+  <li>si vous demandez la sauvegarde de photos qui ne sont plus stockées sur l'appareil,
+  iOS les <strong>récupère depuis votre photothèque iCloud</strong>. Cette option se
+  désactive dans les réglages de chaque synchro ;</li>
+  <li>si vous choisissez comme source ou comme destination un dossier hébergé par un
+  service en ligne — iCloud Drive, Dropbox, Google Drive… — <strong>c'est ce service qui
+  télécharge ou téléverse</strong> les fichiers, via le système, exactement comme si vous
+  les déplaciez vous-même dans l'app Fichiers.</li>
+</ul>
+<p>Dans les deux cas, l'échange se fait entre votre appareil et le compte que vous avez
+choisi. Rien ne transite par nous, et nous n'avons accès à rien.</p>
 
 <h2>Ce qui est enregistré sur votre appareil</h2>
 <p>L'app conserve, dans son propre dossier et uniquement là :</p>

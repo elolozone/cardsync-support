@@ -37,6 +37,32 @@ par exemple une carte mémoire, ou un album de votre photothèque.</p>
   et reprend là où elle en était au lancement suivant.</p>
 </div>
 
+<h2>Quels supports</h2>
+<p>La source et la destination sont deux dossiers, choisis dans l'app Fichiers. Tout ce
+qu'iOS y expose convient, dans les deux sens :</p>
+<ul>
+  <li>une <strong>carte mémoire</strong> via un lecteur, ou un <strong>SSD</strong> ou une clé en USB-C ;</li>
+  <li><strong>iCloud Drive</strong>, et les services que vous avez installés — Dropbox, Google&nbsp;Drive, OneDrive… — dès lors qu'ils autorisent la sélection d'un dossier ;</li>
+  <li>l'<strong>iPhone lui-même</strong>, sous « Sur mon iPhone » ;</li>
+  <li>un <strong>album de votre photothèque</strong>, comme source.</li>
+</ul>
+<p>Rien n'oblige à partir d'une carte : SSD vers SSD, iCloud vers SSD, carte vers iCloud
+fonctionnent de la même façon. Quand un fichier n'est pas encore présent sur l'appareil —
+cas courant avec un service en ligne ou certains lecteurs de cartes — CardSync attend
+qu'il soit réellement disponible avant de le lire, plutôt que d'en copier une version vide.</p>
+
+<h2>Gros volumes et copies longues</h2>
+<p>Les fichiers sont lus et écrits par petits blocs successifs, jamais chargés en entier
+en mémoire : <strong>une vidéo de 4 Go ne consomme pas plus de mémoire qu'une photo</strong>
+— mesuré à environ 90 Mo pour une copie vérifiée de 4 Go. La taille d'un fichier n'est
+donc pas une limite.</p>
+<p>Pour les copies qui durent, c'est la <strong>reprise</strong> qui compte. Chaque fichier
+n'apparaît sous son nom définitif qu'une fois complet et vérifié, et l'analyse suivante
+compare les deux côtés : relancer après une interruption — écran quitté, support
+débranché, batterie — ne recopie que ce qui manque réellement. Sur un jeu de plusieurs
+dizaines de milliers de fichiers, cette analyse reste affaire de secondes, et les fichiers
+déjà vérifiés ne sont jamais refaits.</p>
+
 <h2>Ce que fait la vérification</h2>
 <p>Chaque fichier est d'abord écrit sous un nom temporaire, puis mis en place d'un seul
 geste, une fois complet et vérifié. Un fichier déjà présent à destination n'est jamais

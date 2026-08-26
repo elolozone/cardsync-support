@@ -38,11 +38,19 @@
 Nothing else. Your files never leave your own drives.</p>
 
 <h2>Network use</h2>
-<p>CardSync sends nothing over the internet. The only network use is
-<strong>downloading your own photos from your iCloud photo library</strong>, when you ask
-to back up items that are no longer stored on the device. That exchange happens between
-your device and your iCloud account, with no intermediary, and the option can be turned
-off in each sync's settings.</p>
+<p>CardSync contains no networking code and contacts no server of ours. Traffic can still
+occur, in two cases, and always between your device and your own accounts:</p>
+<ul>
+  <li>if you ask to back up photos no longer stored on the device, iOS <strong>fetches
+  them from your iCloud photo library</strong>. That option can be turned off in each
+  sync's settings;</li>
+  <li>if you pick a folder hosted by an online service — iCloud Drive, Dropbox, Google
+  Drive… — as source or destination, <strong>that service downloads or uploads</strong>
+  the files through the system, exactly as it would if you moved them yourself in the
+  Files app.</li>
+</ul>
+<p>In both cases the exchange is between your device and the account you chose. Nothing
+passes through us, and we have access to nothing.</p>
 
 <h2>What is stored on your device</h2>
 <p>The app keeps, in its own folder and nowhere else:</p>
