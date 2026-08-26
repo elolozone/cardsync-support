@@ -57,3 +57,33 @@ code {
   background: var(--encadre); border: 1px solid var(--trait);
   border-radius: 5px; padding: 0.1em 0.35em; font-size: 0.9em;
 }
+
+/* ── Page de présentation ─────────────────────────────────────────── */
+.hero { text-align: center; padding: 1rem 0 2.5rem; }
+.hero img.icone {
+  width: 104px; height: 104px; border-radius: 23px; margin-bottom: 1.1rem;
+  box-shadow: 0 6px 22px rgba(0,0,0,0.16);
+}
+.hero h1 { font-size: 2.1rem; margin: 0 0 0.4rem; letter-spacing: -0.02em; }
+.hero .accroche { font-size: 1.12rem; color: var(--doux); margin: 0 auto; max-width: 32rem; }
+.atouts { display: grid; gap: 1rem; margin: 2.5rem 0; }
+@media (min-width: 34rem) { .atouts { grid-template-columns: 1fr 1fr; } }
+.atout {
+  background: var(--encadre); border: 1px solid var(--trait);
+  border-radius: 14px; padding: 1.1rem 1.2rem;
+}
+.atout h3 { margin: 0 0 0.35rem; font-size: 1rem; }
+.atout p { margin: 0; font-size: 0.94rem; color: var(--doux); }
+.galerie {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.9rem; margin: 2.5rem 0;
+}
+.galerie img {
+  width: 100%; height: auto; border-radius: 14px; border: 1px solid var(--trait);
+}
+@media (max-width: 34rem) { .galerie { grid-template-columns: 1fr; } }
+.mesure {
+  display: flex; flex-wrap: wrap; gap: 1.6rem; justify-content: center;
+  margin: 2.2rem 0; text-align: center;
+}
+.mesure div strong { display: block; font-size: 1.5rem; letter-spacing: -0.02em; }
+.mesure div span { font-size: 0.85rem; color: var(--doux); }
