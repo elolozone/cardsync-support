@@ -14,13 +14,16 @@
   <div class="marque">✓</div>
   <div>
     <h1>Privacy Policy</h1>
-    <p>CardSync · last updated: 26 August 2026</p>
+    <p>CardSync · last updated: 20 October 2026</p>
   </div>
 </header>
 
 <div class="encadre">
   <p><strong>CardSync collects no data.</strong> No account, no tracking, no advertising,
-  no analytics, no third-party component. No information is sent to us, or to anyone else.</p>
+  no analytics. Nothing is sent to us. Your files only go where you send them. To connect
+  over SSH to an SFTP server, the app includes open-source libraries published by Apple
+  (SwiftNIO, swift-crypto): they collect nothing, and their licenses can be read in the
+  app.</p>
 </div>
 
 <h2>What the app accesses</h2>
@@ -34,32 +37,56 @@
 </ul>
 
 <h2>What the app does with your files</h2>
-<p>It copies them from the folder or album you chose to the destination folder you chose.
-Nothing else. Your files never leave your own drives.</p>
+<p>It copies them from the folder or album you chose to the destination you chose: a
+folder, or an S3 or SFTP server you added yourself. Nothing else. Your files never go
+anywhere but your own storage and your own accounts.</p>
 
 <h2>Network use</h2>
-<p>CardSync contains no networking code and contacts no server of ours. Traffic can still
-occur, in two cases, and always between your device and your own accounts:</p>
+<p>CardSync contacts no server of ours: we have none. Traffic can happen in four cases,
+always between your device and your own accounts:</p>
 <ul>
+  <li>if you pick <strong>an S3 server you added</strong> as the destination, the app
+  sends your files to it, directly, with the access keys you gave it. Over Wi-Fi only,
+  unless you allow cellular data for that server. If you turn on read-back, each file is
+  downloaded again to be compared with the original;</li>
+  <li>if you pick <strong>an SFTP server you added</strong> as the destination, the app
+  connects to it directly, over SSH, with the password or key you gave it, and sends your
+  files over that encrypted connection. On the first connection it shows you the
+  fingerprint of the server's key so you can check it; it remembers it, and refuses to
+  connect if it changes. It asks the server to compute the digest of the files it stored
+  or, if the server cannot do that, reads them back. Over Wi-Fi only, unless you allow
+  cellular data for that server;</li>
   <li>if you ask to back up photos no longer stored on the device, iOS <strong>fetches
-  them from your iCloud photo library</strong>. That option can be turned off in each
-  sync's settings;</li>
+  them from your iCloud photo library</strong>. This can be turned off in each sync's
+  settings;</li>
   <li>if you pick a folder hosted by an online service — iCloud Drive, Dropbox, Google
   Drive… — as source or destination, <strong>that service downloads or uploads</strong>
-  the files through the system, exactly as it would if you moved them yourself in the
-  Files app.</li>
+  the files, through the system.</li>
 </ul>
-<p>In both cases the exchange is between your device and the account you chose. Nothing
-passes through us, and we have access to nothing.</p>
+<p>In all four cases the exchange is between your device and the account or server you
+chose. Nothing passes through us, and we have access to nothing.</p>
+<p>If your server is on your local network — a NAS, a computer — iOS asks you to let
+CardSync access it. The app uses that only to reach that server.</p>
 
 <h2>What is stored on your device</h2>
-<p>The app keeps, in its own folder and nowhere else:</p>
+<p>The app keeps, on the device and only there:</p>
 <ul>
-  <li>the list of your syncs — the folders you chose and their settings;</li>
-  <li>a history of recent runs — file counts, volume, duration, errors.</li>
+  <li>the list of your syncs — the folders chosen and their settings;</li>
+  <li>a history of recent runs — number of files, volume, duration, errors;</li>
+  <li>the list of servers you added — for S3, the address, bucket name and access key
+  ID; for SFTP, the address, port, user name, folder and the fingerprint of the server's
+  key (something the server gives to anyone, not a secret);</li>
+  <li>what opens each server, in the device's keychain: the S3 <strong>secret
+  key</strong>, or the SFTP <strong>password</strong>, or the <strong>private
+  key</strong> the app created on the device for SFTP. It never leaves: only the public
+  half of a key is shown, so you can add it to your server. None of it is displayed
+  again, synced by iCloud, or carried over in a backup to another device.</li>
 </ul>
-<p>Both files are visible from the Files app, under <code>On My iPhone › CardSync</code>.
-They stay on the device and are removed with the app if you delete it.</p>
+<p>The first two files are visible in the Files app, under <code>On My iPhone ›
+CardSync</code>. Everything goes away with the app if you delete it, with one caveat: iOS
+may keep keychain contents after an uninstall. To be sure it is erased, delete the server
+in CardSync before uninstalling. If you reinstall the app, it erases at launch any secret
+that no longer matches a server.</p>
 
 <h2>Children</h2>
 <p>CardSync is not directed at children and gathers no information that could identify
