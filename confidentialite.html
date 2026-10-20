@@ -14,14 +14,16 @@
   <div class="marque">✓</div>
   <div>
     <h1>Politique de confidentialité</h1>
-    <p>CardSync · dernière mise à jour : 26 août 2026</p>
+    <p>CardSync · dernière mise à jour : 20 octobre 2026</p>
   </div>
 </header>
 
 <div class="encadre">
   <p><strong>CardSync ne collecte aucune donnée.</strong> Pas de compte, pas de suivi,
-  pas de publicité, aucune analytique, aucun composant tiers. Aucune information ne nous
-  est transmise, ni à qui que ce soit d'autre.</p>
+  pas de publicité, aucune analytique. Aucune information ne nous est transmise. Vos
+  fichiers ne vont que là où vous les envoyez. Pour se connecter en SSH à un serveur
+  SFTP, l'app embarque des bibliothèques libres publiées par Apple (SwiftNIO,
+  swift-crypto) : elles ne collectent rien, et leurs licences se lisent dans l'app.</p>
 </div>
 
 <h2>Ce à quoi l'app accède</h2>
@@ -35,35 +37,65 @@
 </ul>
 
 <h2>Ce que l'app fait de vos fichiers</h2>
-<p>Elle les copie du dossier ou de l'album que vous avez choisi vers le dossier de
-destination que vous avez choisi. Rien d'autre. Vos fichiers ne quittent jamais vos
-propres supports.</p>
+<p>Elle les copie du dossier ou de l'album que vous avez choisi vers la destination que
+vous avez choisie : un dossier, ou un serveur S3 ou SFTP que vous avez vous-même ajouté.
+Rien d'autre. Vos fichiers ne vont jamais ailleurs que sur vos propres supports et vos
+propres comptes.</p>
 
 <h2>Utilisation du réseau</h2>
-<p>CardSync ne possède aucun code réseau et ne contacte aucun serveur qui lui
-appartiendrait. Du trafic peut néanmoins avoir lieu, dans deux cas, et toujours entre
-votre appareil et vos propres comptes :</p>
+<p>CardSync ne contacte aucun serveur qui nous appartiendrait : nous n'en avons pas. Du
+trafic peut avoir lieu dans quatre cas, et toujours entre votre appareil et vos propres
+comptes :</p>
 <ul>
+  <li>si vous choisissez comme destination un <strong>serveur S3 que vous avez
+  ajouté</strong>, l'app y envoie vos fichiers, directement, avec les clés d'accès que
+  vous lui avez données. En Wi-Fi seulement, sauf si vous autorisez les données
+  cellulaires pour ce serveur. Si vous activez la relecture, chaque fichier est
+  retéléchargé pour être comparé à l'original ;</li>
+  <li>si vous choisissez comme destination un <strong>serveur SFTP que vous avez
+  ajouté</strong>, l'app s'y connecte directement, en SSH, avec le mot de passe ou la
+  clé que vous lui avez donnés, et y envoie vos fichiers par cette connexion chiffrée.
+  À la première connexion, elle vous montre l'empreinte de la clé du serveur pour que
+  vous la vérifiiez ; elle la mémorise, et refuse de se connecter si elle change. Elle
+  demande au serveur de calculer l'empreinte des fichiers qu'il a rangés, ou, s'il ne
+  sait pas le faire, les relit. En Wi-Fi seulement, sauf si vous autorisez les données
+  cellulaires pour ce serveur ;</li>
   <li>si vous demandez la sauvegarde de photos qui ne sont plus stockées sur l'appareil,
   iOS les <strong>récupère depuis votre photothèque iCloud</strong>. Cette option se
   désactive dans les réglages de chaque synchro ;</li>
   <li>si vous choisissez comme source ou comme destination un dossier hébergé par un
   service en ligne — iCloud Drive, Dropbox, Google Drive… — <strong>c'est ce service qui
-  télécharge ou téléverse</strong> les fichiers, via le système, exactement comme si vous
-  les déplaciez vous-même dans l'app Fichiers.</li>
+  télécharge ou téléverse</strong> les fichiers, via le système.</li>
 </ul>
-<p>Dans les deux cas, l'échange se fait entre votre appareil et le compte que vous avez
-choisi. Rien ne transite par nous, et nous n'avons accès à rien.</p>
+<p>Dans les quatre cas, l'échange se fait entre votre appareil et le compte ou le
+serveur que vous avez choisi. Rien ne transite par nous, et nous n'avons accès à rien.</p>
+<p>Si votre serveur se trouve sur votre réseau local — un NAS, un ordinateur — iOS vous
+demande d'autoriser CardSync à y accéder. L'app ne s'en sert que pour joindre ce
+serveur.</p>
 
 <h2>Ce qui est enregistré sur votre appareil</h2>
-<p>L'app conserve, dans son propre dossier et uniquement là :</p>
+<p>L'app conserve, sur l'appareil et uniquement là :</p>
 <ul>
   <li>la liste de vos synchros — les dossiers choisis et leurs réglages ;</li>
-  <li>un historique des dernières exécutions — nombre de fichiers, volume, durée, erreurs.</li>
+  <li>un historique des dernières exécutions — nombre de fichiers, volume, durée,
+  erreurs ;</li>
+  <li>la liste des serveurs que vous avez ajoutés — pour S3, l'adresse, le nom du bucket
+  et l'identifiant de clé ; pour SFTP, l'adresse, le port, le nom d'utilisateur, le
+  dossier et l'empreinte de la clé du serveur (une information que le serveur donne à
+  tout le monde, pas un secret) ;</li>
+  <li>ce qui ouvre chaque serveur, dans le trousseau de l'appareil : la <strong>clé
+  secrète</strong> S3, ou le <strong>mot de passe</strong> SFTP, ou la <strong>clé
+  privée</strong> que l'app a créée sur l'appareil pour SFTP. Elle n'en sort jamais :
+  seule la partie publique d'une clé se montre, pour que vous l'ajoutiez à votre
+  serveur. Rien de tout cela n'est réaffiché, ni synchronisé par iCloud, ni emporté dans
+  une sauvegarde vers un autre appareil.</li>
 </ul>
-<p>Ces deux fichiers sont visibles depuis l'app Fichiers, dans
-<code>Sur mon iPhone › CardSync</code>. Ils restent sur l'appareil et disparaissent
-avec l'app si vous la supprimez.</p>
+<p>Les deux premiers fichiers sont visibles depuis l'app Fichiers, dans
+<code>Sur mon iPhone › CardSync</code>. Tout disparaît avec l'app si vous la supprimez,
+à une réserve près : iOS peut garder le contenu du trousseau après une désinstallation.
+Pour l'effacer à coup sûr, supprimez le serveur dans CardSync avant de désinstaller
+l'app. Si vous la réinstallez, elle efface d'elle-même, au lancement, les secrets qui ne
+correspondent plus à aucun serveur.</p>
 
 <h2>Enfants</h2>
 <p>CardSync ne s'adresse pas particulièrement aux enfants et ne recueille aucune
